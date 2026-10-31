@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saylani Welfare International Trust</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8fbf8;
+            color: #111;
+        }
+
+        /* TOP HEADER */
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #07549b;
+        }
+
+        .logo span {
+            color: #60b943;
+        }
+
+        .contact {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .header-buttons button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            background: #07549b;
+            cursor: pointer;
+            margin: 4px;
+            font-weight: bold;
+        }
+
+        .header-buttons .donate {
+            background: #60b943;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: white;
+            padding: 18px 5%;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #60b943;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 55px 5%;
+            gap: 40px;
+        }
+
+        .hero-content {
+            width: 50%;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7f5e4;
+            color: #60b943;
+            padding: 12px 20px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5.5vw, 70px);
+            line-height: 1.12;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #60b943;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .primary-btn {
+            background: #07549b;
+            color: white;
+            border: none;
+            padding: 15px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .hero-image {
+            width: 50%;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            border-radius: 35px;
+            border: 5px solid white;
+            box-shadow: 0 10px 35px #0002;
+        }
+
+        .stats {
+            position: absolute;
+            bottom: 15px;
+            left: 5%;
+            right: 5%;
+            background: #ffffffed;
+            padding: 20px;
+            border-radius: 25px;
+        }
+
+        .stats h2 {
+            color: #60b943;
+            font-size: 35px;
+        }
+
+        .stats p {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* DONATION BAR */
+
+        .donation-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: #08a9e8;
+            color: white;
+            padding: 22px 10px;
+            border-radius: 45px 45px 0 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .donation-bar button {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* PROGRAMS */
+
+        .programs {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .programs h2 {
+            font-size: 36px;
+            margin-bottom: 35px;
+        }
+
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 20px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #0000000c;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .emoji {
+            font-size: 45px;
+        }
+
+        .card h3 {
+            color: #07549b;
+            margin: 15px 0;
+        }
+
+        .card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #07549b;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* DONATION POPUP */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #0009;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 15px;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal-box h2 {
+            color: #60b943;
+            margin-bottom: 15px;
+        }
+
+        .modal-box input {
+            width: 100%;
+            padding: 13px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .modal-box button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #60b943;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .modal-box .close {
+            background: #07549b;
+        }
+
+        /* MOBILE RESPONSIVE */
+
+        @media(max-width: 768px) {
+
+            .top-header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .contact {
+                justify-content: center;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-image img {
+                height: 320px;
+            }
+
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div class="logo">
+            Saylani<span>Welfare</span>
+        </div>
+
+        <div class="contact">
+            <span>✉ info@saylaniwelfare.com</span>
+            <span>☎ 0311 1729526</span>
+            <span>☎ +92 21 111 729 526</span>
+        </div>
+
+        <div class="header-buttons">
+            <button onclick="openDonation()">Be a Sponsor</button>
+            <button class="donate" onclick="openDonation()">
+                Donate Now ♥
+            </button>
+        </div>
+
+    </header>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#media">Media</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#services">Bank Details</a>
+        <a href="#contact">Donor Dashboard</a>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                ✨ Pakistan's Largest Welfare NGO
+            </div>
+
+            <h1>
+                Welcome to
+                <span>Saylani Welfare</span>
+                International Trust
+            </h1>
+
+            <p>
+                Serving humanity with love and kindness.
+                Together we can create a better future
+                for everyone.
+            </p>
+
+            <button class="primary-btn" onclick="openDonation()">
+                Donate Now →
+            </button>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1000" alt="Children">
+
+            <div class="stats">
+                <h2 id="counter">0+</h2>
+                <p>People Served Daily</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DONATION BAR -->
+
+    <section class="donation-bar">
+
+        <button onclick="openDonation('Food Donation')">
+            🍲 Food Donation
+        </button>
+
+        <button onclick="openDonation('Sadaqah')">
+            ♥ Sadaqah
+        </button>
+
+        <button onclick="openDonation('Zakat')">
+            🤲 Zakat
+        </button>
+
+    </section>
+
+    <!-- PROGRAMS -->
+
+    <section class="programs" id="services">
+
+        <h2>Our Services</h2>
+
+        <div class="program-cards">
+
+            <div class="card">
+                <div class="emoji">🍲</div>
+                <h3>Food Distribution</h3>
+                <p>
+                    Providing food to needy families
+                    and helping people in difficult times.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📚</div>
+                <h3>Education</h3>
+                <p>
+                    Helping students get quality
+                    education and a better future.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🏥</div>
+                <h3>Medical Services</h3>
+                <p>
+                    Supporting people with medical
+                    facilities and healthcare services.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="programs" id="about">
+
+        <h2>About Saylani Welfare</h2>
+
+        <p>
+            Saylani Welfare International Trust is a
+            charitable organization working to support
+            people through education, food and healthcare.
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer id="contact">
+        <h2>Saylani Welfare International Trust</h2>
+        <p>Serving Humanity With Love ❤️</p>
+        <p>© 2026 Saylani Welfare - Student Practice Project</p>
+    </footer>
+
+    <!-- DONATION POPUP -->
+
+    <div class="modal" id="donationModal">
+
+        <div class="modal-box">
+
+            <h2>Support Humanity ❤️</h2>
+
+            <p id="donationType">
+                Select your donation amount.
+            </p>
+
+            <input type="number" id="amount" placeholder="Enter Amount (PKR)" min="1">
+
+            <button onclick="submitDonation()">
+                Continue
+            </button>
+
+            <button class="close" onclick="closeDonation()">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // Donation popup open
+
+        function openDonation(type = "Donation") {
+
+            document.getElementById("donationModal")
+                .style.display = "flex";
+
+            document.getElementById("donationType")
+                .innerText = type + " - Enter your amount";
+        }
+
+        // Donation popup close
+
+        function closeDonation() {
+
+            document.getElementById("donationModal")
+                .style.display = "none";
+
+        }
+
+        // Donation button
+
+        function submitDonation() {
+
+            let amount = document.getElementById("amount").value;
+
+            if (amount === "" || Number(amount) <= 0) {
+
+                alert("Please enter a valid amount!");
+
+            } else {
+
+                alert(
+                    "Thank you! Your donation amount is Rs. " +
+                    amount +
+                    ". This is a demo only."
+                );
+
+                closeDonation();
+
+            }
+
+        }
+
+        // Counter animation
+
+        let count = 0;
+
+        let target = 450000;
+
+        let counter = document.getElementById("counter");
+
+        let timer = setInterval(function () {
+
+            count += 5000;
+
+            if (count >= target) {
+
+                count = target;
+
+                clearInterval(timer);
+
+            }
+
+            counter.innerText = count.toLocaleString() + "+";
+
+        }, 30);
+
+    </script>
+
+</body>
+
+</html>
